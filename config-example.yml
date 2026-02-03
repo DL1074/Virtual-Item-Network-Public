@@ -1,0 +1,86 @@
+# VHN - Virtual Hopper Networks Configuration
+# This is an example configuration file for the public repository
+# Copy this to your server's plugins/VHN/config.yml and customize as needed
+
+# Performance Settings
+performance:
+  # Enable/disable the plugin
+  enabled: true
+  
+  # Maximum number of hoppers in a single network
+  max-network-size: 50
+  
+  # Minimum number of hoppers to form a network
+  min-network-size: 2
+  
+  # Maximum items to transfer per operation
+  max-transfer-amount: 8
+  
+  # Speed multiplier for transfers (1.0 = vanilla speed)
+  # Ultra-low for 50k+ networks to prevent lag
+  transfer-speed-multiplier: 1.0
+  
+  # How often to process networks (in ticks)
+  # Process every 20 ticks (1 second) for better performance
+  process-interval: 20
+  
+  # Batch processing: how many networks to process per tick
+  # Networks are rotated so all get processed over multiple ticks
+  # Set to -1 to process all networks every interval (legacy behavior)
+  # Recommended: 25-50 for 50-100 networks (processes all networks over 2-4 ticks)
+  max-networks-per-tick: 50
+
+# Network Detection
+network:
+  # Auto-detect networks when chunks load
+  auto-detect-on-load: false
+  
+  # Auto-scan when players join (scans their loaded chunks)
+  auto-scan-on-join: true
+  
+  # Rebuild networks when hoppers are placed/broken
+  auto-rebuild: true
+  
+  # Maximum distance to scan for connected hoppers (in blocks)
+  scan-radius: 128
+  
+  # Include hopper minecarts in networks (experimental)
+  include-minecarts: false
+  
+  # How often to cleanup networks in unloaded chunks (in minutes)
+  cleanup-interval: 10
+
+# World Settings
+worlds:
+  # Worlds where VHN is disabled
+  disabled-worlds:
+    - world_nether_disabled_example
+    - world_the_end_disabled_example
+
+# Debug Settings
+debug:
+  # Enable debug logging (verbose output)
+  enabled: false
+  
+  # Log network creation/destruction
+  log-network-changes: false
+  
+  # Log item transfers
+  log-transfers: false
+
+# Recommended Settings by Server Size:
+#
+# Small Server (2-10 networks):
+#   process-interval: 20
+#   max-transfer-amount: 8
+#   max-networks-per-tick: -1
+#
+# Medium Server (50-100 networks):
+#   process-interval: 20
+#   max-transfer-amount: 8
+#   max-networks-per-tick: 25
+#
+# Large Server (100+ networks):
+#   process-interval: 20
+#   max-transfer-amount: 8
+#   max-networks-per-tick: 50
